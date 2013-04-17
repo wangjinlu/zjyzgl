@@ -8,12 +8,7 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" 
-      p:driverClass="${jdbc.db.driver}"
-      p:url="${jdbc.db.url}"
-      p:username="${jdbc.db.username}"
-      p:password="${jdbc.db.password}"
-    />
+    <import resource="databaseConfig.xml" />
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" 
       p:dataSource-ref="dataSource"

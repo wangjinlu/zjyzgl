@@ -198,6 +198,12 @@
           <artifactId>jetty-maven-plugin</artifactId>
           <version>9.0.1.v20130408</version>
           <configuration>
+            <systemProperties>
+              <systemProperty>
+                <name>spring.profiles.active</name>
+                <value>dev</value>
+              </systemProperty>
+            </systemProperties>
             <webApp>
               <contextPath>/${project.artifactId}</contextPath>
             </webApp>
