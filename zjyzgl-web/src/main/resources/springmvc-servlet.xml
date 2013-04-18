@@ -13,9 +13,6 @@
 	</context:component-scan>
 		
 	<mvc:annotation-driven>
-	  <mvc:argument-resolvers>
-	    <bean class="org.springframework.data.web.PageableArgumentResolver" />
-	  </mvc:argument-resolvers>
 	  <mvc:message-converters>
 	    <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 	      <property name="objectMapper">

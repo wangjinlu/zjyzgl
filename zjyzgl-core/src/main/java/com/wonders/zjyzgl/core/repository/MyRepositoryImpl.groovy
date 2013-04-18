@@ -3,6 +3,7 @@ package com.wonders.zjyzgl.core.repository
 import javax.persistence.EntityManager
 import javax.persistence.TypedQuery
 import javax.persistence.criteria.CriteriaQuery
+import javax.persistence.criteria.Predicate;
 
 import org.apache.commons.lang3.StringUtils
 import org.springframework.data.domain.Page
@@ -82,7 +83,7 @@ class MyRepositoryImpl<T, ID extends Serializable>
 			predicates << builder."$oper"(root.get(prop), v)
 		}
 		
-		query.where(predicates)
+		query.where(predicates.toArray(new Predicate[predicates.size]))
 	}
 	
 	private Page<T> readPage(TypedQuery<T> query, Pageable pageable, Map params) {
