@@ -16,12 +16,25 @@ abstract class AbstractBaseController<T, ID extends Serializable> {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody Page<T> findAll(@RequestParam Map params, Pageable pageable) {
-		getRepository().findAll(params, pageable)
+//		getRepository().findAll(params, pageable)
+		getRepository().findAll(pageable)
 	}
 	
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	@ResponseBody T findOne(@PathVariable ID id) {
 		getRepository().findOne(id)
+	}
+	
+	@RequestMapping(value = "{id}", method = RequestMethod.POST)
+	@ResponseBody String add(T entity) {
+		getRepository().save(entity)
+		'{success: true}'
+	}
+	
+	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
+	@ResponseBody String modify(T entity) {
+		getRepository().save(entity)
+		'{success: true}'
 	}
 	
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
