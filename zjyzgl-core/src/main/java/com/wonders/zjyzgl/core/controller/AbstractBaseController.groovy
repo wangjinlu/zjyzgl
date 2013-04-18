@@ -2,7 +2,7 @@ package com.wonders.zjyzgl.core.controller
 
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
@@ -16,8 +16,7 @@ abstract class AbstractBaseController<T, ID extends Serializable> {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody Page<T> findAll(@RequestParam Map params, Pageable pageable) {
-//		getRepository().findAll(params, pageable)
-		getRepository().findAll(pageable)
+		getRepository().findAll(params, pageable)
 	}
 	
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
