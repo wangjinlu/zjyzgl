@@ -2,20 +2,29 @@ package com.wonders.zjyzgl.entity;
 
 import static javax.persistence.TemporalType.DATE;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @Table(name = "sec_user")
-public class User extends AbstractPersistable<Long> {
+public class User implements Serializable{
 
 	private static final long serialVersionUID = 8754573634208751281L;
-
+	
+	@Id
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
+	private String id;
+	
 	private String username;
 
 	private String password;
@@ -26,6 +35,15 @@ public class User extends AbstractPersistable<Long> {
 	private Date birthday;
 
 	private boolean enabled;
+	
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getUsername() {
 		return this.username;
