@@ -12,13 +12,13 @@ import com.wonders.zjyzgl.repository.UserRepository
 
 @Controller
 @RequestMapping("users")
-class UserController extends AbstractBaseController<User, Long> {
+class UserController extends AbstractBaseController<User, String> {
 	
 	@Inject
 	private UserRepository userRepository
 
 	@Override
-	MyRepository<User, Long> getRepository() {
+	MyRepository<User, String> getRepository() {
 		userRepository
 	}
 
