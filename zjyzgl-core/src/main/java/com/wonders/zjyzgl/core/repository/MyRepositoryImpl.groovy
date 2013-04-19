@@ -83,7 +83,10 @@ class MyRepositoryImpl<T, ID extends Serializable>
 			predicates << builder."$oper"(root.get(prop), v)
 		}
 		
-		query.where(predicates.toArray(new Predicate[predicates.size]))
+		if (predicates) {
+			query.where(predicates as Predicate[])
+		}
+		
 	}
 	
 	private Page<T> readPage(TypedQuery<T> query, Pageable pageable, Map params) {
