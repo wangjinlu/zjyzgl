@@ -2,6 +2,9 @@ package com.wonders.zjyzgl.signage.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
@@ -16,6 +19,8 @@ public class YwBcbzp implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	private String id;
 
 	private int bclx;
