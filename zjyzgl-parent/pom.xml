@@ -257,7 +257,7 @@
         <jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
         <jdbc.driver.version>5.1.24</jdbc.driver.version>
         <jdbc.db.driver>com.mysql.jdbc.Driver</jdbc.db.driver>
-        <jdbc.db.url>jdbc:mysql://localhost:3306/${project.artifactId}?createDatabaseIfNotExist=true</jdbc.db.url>
+        <jdbc.db.url>jdbc:mysql://localhost:3306/mysql?createDatabaseIfNotExist=true</jdbc.db.url>
         <jdbc.db.username>root</jdbc.db.username>
         <jdbc.db.password>root</jdbc.db.password>
       </properties>
