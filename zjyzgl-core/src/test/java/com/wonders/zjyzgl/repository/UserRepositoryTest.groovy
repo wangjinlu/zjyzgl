@@ -31,7 +31,13 @@ public class UserRepositoryTest {
 
 	@Test
 	public final void testFindAllMapPageable() {
-		userRepository.findAll([:], new PageRequest(1, 10))
+		
+		def params =  [
+			'username_equal' : 'aaaa',
+			'password_like'  : 'bbbb'
+		]
+		
+		userRepository.findAll(params, new PageRequest(1, 10))
 	}
 
 }

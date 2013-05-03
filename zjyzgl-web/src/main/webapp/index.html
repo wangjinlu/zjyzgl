@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="easyui/themes/gray/easyui.css">  
+<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">  
+<script type="text/javascript" src="easyui/jquery-1.8.0.min.js"></script>  
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<table id="dg" title="My Users" class="easyui-datagrid">  
+    <thead>  
+        <tr>  
+            <th data-options="field:'username',width:100">用户名</th>  
+            <th data-options="field:'password',width:100">密码</th>  
+            <th data-options="field:'age',width:100,align:'right'">年龄</th>  
+        </tr>  
+    </thead>  
+</table>   
+</body>
+</html>
+
+<script type="text/javascript">
+$('#dg').datagrid({
+	width: 600,  
+    height: 250,
+    url: 'users',
+    method: 'get',
+    striped: true,
+    singleSelect: true,
+    pagination: true
+});
+</script>
