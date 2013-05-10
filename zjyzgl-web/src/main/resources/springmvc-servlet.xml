@@ -11,7 +11,11 @@
 	<context:component-scan base-package="com.wonders.zjyzgl.**.controller" use-default-filters="false">
 	  <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-		
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+	    <property name="prefix" value="/"></property>
+	    <property name="suffix" value=".jsp"></property>
+	</bean>
 	<mvc:annotation-driven>
 	  <mvc:message-converters>
 	    <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -26,7 +30,6 @@
 	    </bean>
 	  </mvc:message-converters>
 	</mvc:annotation-driven>
-	
 	<mvc:default-servlet-handler />
 
 </beans>
