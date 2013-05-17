@@ -2,6 +2,9 @@ package com.wonders.zjyzgl.apply.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import java.sql.Timestamp;
 
 /**
@@ -14,6 +17,8 @@ public class MatterApplyInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	private String guid;
 
 	@Column(name = "adms_num")

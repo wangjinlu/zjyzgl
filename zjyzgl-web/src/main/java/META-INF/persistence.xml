@@ -3,5 +3,6 @@
 		<class>com.wonders.zjyzgl.chartered.entity.AdmissionCharteredInfo</class>
 		<class>com.wonders.zjyzgl.entity.User</class>
 		<class>com.wonders.zjyzgl.signage.entity.YwBcbzp</class>
+		<class>com.wonders.zjyzgl.apply.entity.MatterApplyInfo</class>
 	</persistence-unit>
 </persistence>
