@@ -1,6 +1,8 @@
 package com.wonders.zjyzgl.core.controller
 
 import org.apache.commons.lang3.StringUtils
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.PageRequest
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -12,6 +14,8 @@ import com.wonders.zjyzgl.core.dto.Pagination
 import com.wonders.zjyzgl.core.repository.MyRepository
 
 abstract class AbstractBaseController<T, ID extends Serializable> {
+	
+	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	abstract MyRepository<T, ID> getRepository()
 	
@@ -32,21 +36,18 @@ abstract class AbstractBaseController<T, ID extends Serializable> {
 	}
 	
 	@RequestMapping(value = "{id}", method = RequestMethod.POST)
-	@ResponseBody String add(T entity) {
+	@ResponseBody T add(T entity) {
 		getRepository().save(entity)
-		'{success: true}'
 	}
 	
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-	@ResponseBody String modify(T entity) {
+	@ResponseBody T modify(T entity) {
 		getRepository().save(entity)
-		'{success: true}'
 	}
 	 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-	@ResponseBody String delete(@PathVariable ID id) {
+	@ResponseBody void delete(@PathVariable ID id) {
 		getRepository().delete(id)
-		'{success: true}'
 	}
 	
 	protected Map<String, Object> getSearchParams(Map<String, ?> params) {
@@ -54,8 +55,10 @@ abstract class AbstractBaseController<T, ID extends Serializable> {
 		for (String key : params.keySet()) {
 			if (StringUtils.startsWith(key, "search_")) {
 				String name = StringUtils.substringAfter(key, "search_")
-				Object value = params.get(key)
-				filters.put(name, value)
+				Object value = params.get(key) 
+				if (value) {
+					filters.put(name, value)
+				}
 			}
 		}
 		filters
